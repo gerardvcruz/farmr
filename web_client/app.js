@@ -7,8 +7,6 @@ $( "#login" ).on( "click",  function() {
       password:$("#password").val()
      },
      success: function(data, status, xhr) {
-      //alert($("#username").val());
-      //console.log(data.data.user_type);
       if(data.data.user_type)
         window.location='supplier.html';
       else
