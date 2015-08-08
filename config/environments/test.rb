@@ -39,4 +39,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.chikka_client_id  = ENV["CHIKKA_CLIENT_KEY"]
+  config.chikka_secret_key = ENV["CHIKKA_SECRET_KEY"]
+  config.chikka_short_code = 2929032767
 end
