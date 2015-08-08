@@ -3,7 +3,25 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :supplies, :logs, :categories
+      resources :supplies do
+
+      end
+
+      resources :logs do
+
+      end
+
+      resources :categories, only: [:index] do
+
+      end
+
+      resources :units, only: [:index] do
+
+      end
+
+      resources :orders do
+
+      end
     end
   end
 end
