@@ -1,8 +1,8 @@
 module Api
   module V1
     class ResourceController < ApplicationController
-      before_action :set_resource
       before_action :set_default_response_format
+      before_action :set_resource, only: [:destroy, :show, :update]
 
       def index
         plural_resource_name = "@#{resource_name.pluralize}"
@@ -65,7 +65,7 @@ module Api
         end
 
         def resource_params
-          @resource_params ||= class_of_resource.permit!
+          @resource_params ||= self.send("#{resource_name}_params")
         end
 
         def set_resource(resource = nil)

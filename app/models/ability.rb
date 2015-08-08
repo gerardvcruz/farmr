@@ -6,11 +6,11 @@ class Ability
     user_type = user.user_type
 
     if user_type.name == "Supplier"
-        can :manage, Supply
+      can :manage, Supply
     elsif user_type.name == "Buyer"
 
     else
-        cannot :manage, :all
+      cannot :manage, :all
     end
   end
 end
