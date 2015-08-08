@@ -49,7 +49,6 @@
             custom:pb_colorNormal="@color/main_colour"
             custom:pb_colorPressed="@color/main_colour_pressed"
             custom:pb_colorProgress="@color/purple_progress"
-            custom:pb_textComplete="@string/success"
             custom:pb_textProgress="@string/loading" />
 
     </LinearLayout>

@@ -1,10 +1,14 @@
 package com.friendzone.farmr;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
+import com.friendzone.farmr.utils.Constants;
 
 /**
  * Created by marylourdessabio on 08/08/15.
@@ -13,7 +17,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public Toolbar toolbar;
     Activity activity;
-
+    SharedPreferences shared;
+    SharedPreferences.Editor edit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             getSupportActionBar().setIcon(R.mipmap.ic_launcher);
         }
 
+        shared = getSharedPreferences(Constants.PREF_NAME, Context.MODE_PRIVATE);
+        edit = shared.edit();
 
     }
 

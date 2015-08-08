@@ -12,5 +12,6 @@
     <string name="log_in_to_farmr">Log in to Farmr</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_app">AppActivity</string>
+    <string name="title_activity_order_view">Order Details</string>
 
 </resources>
