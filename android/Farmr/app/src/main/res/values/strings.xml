@@ -1,6 +1,16 @@
 <resources>
-    <string name="app_name">Farmr</string>
+    <string name="app_name">FARMR</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="log_in">Log In</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="success">Success</string>
+    <string name="loading">Logging in</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="log_in_to_farmr">Log in to Farmr</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_app">AppActivity</string>
+
 </resources>

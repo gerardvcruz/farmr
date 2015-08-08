@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyTheme.Base" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/main_colour</item>
+        <item name="colorPrimaryDark">@color/main_colour_pressed</item>
+        <item name="colorAccent">@color/main_colour</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="BaseDialogTheme" parent="Theme.AppCompat.Dialog">
+        <item name="colorPrimary">@color/main_colour</item>
+    </style>
+
+</resources>
