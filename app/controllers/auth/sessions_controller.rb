@@ -47,6 +47,7 @@ module Auth
         yield if block_given?
 
         render json: {
+          code: 1,
           data: @resource.token_validation_response
         }
 
@@ -58,6 +59,7 @@ module Auth
 
       else
         render json: {
+          code: 0,
           errors: [I18n.t("devise_token_auth.sessions.bad_credentials")]
         }, status: 401
       end
