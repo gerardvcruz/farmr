@@ -1,6 +1,7 @@
 module Api
   module V1
     class ResourceController < ApplicationController
+      before_action :set_resource
       before_action :set_default_response_format
 
       def index
@@ -69,7 +70,7 @@ module Api
 
         def set_resource(resource = nil)
           resource ||= class_of_resource.where(id: params[:id]).first
-          instance_variable_set("@#{}", resource)
+          instance_variable_set("@#{resource_name}", resource)
         end
 
         def set_default_response_format

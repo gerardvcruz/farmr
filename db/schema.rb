@@ -11,10 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150808065124) do
+ActiveRecord::Schema.define(version: 20150808075605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activity_types", force: :cascade do |t|
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "logs", force: :cascade do |t|
+    t.integer  "activity_type"
+    t.integer  "supplier_id"
+    t.integer  "buyer_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "supplies", force: :cascade do |t|
     t.integer  "supplier_id"
@@ -25,10 +45,16 @@ ActiveRecord::Schema.define(version: 20150808065124) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "user_types", force: :cascade do |t|
-    t.string   "type"
+  create_table "units", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_types", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "users", force: :cascade do |t|
