@@ -25,6 +25,7 @@ module Auth
       # success redirect url is required
       if resource_class.devise_modules.include?(:confirmable) && !redirect_url
         return render json: {
+          code: 1,
           status: 'error',
           data:   @resource.as_json,
           errors: [I18n.t("devise_token_auth.registrations.missing_confirm_success_url")]
@@ -35,6 +36,7 @@ module Auth
       if DeviseTokenAuth.redirect_whitelist
         unless DeviseTokenAuth.redirect_whitelist.include?(redirect_url)
           return render json: {
+            code: 0,
             status: 'error',
             data:   @resource.as_json,
             errors: [I18n.t("devise_token_auth.registrations.redirect_url_not_allowed", redirect_url: redirect_url)]
@@ -71,12 +73,14 @@ module Auth
           end
 
           render json: {
+            code: 1,
             status: 'success',
             data:   @resource.as_json
           }
         else
           clean_up_passwords @resource
           render json: {
+            code: 0,
             status: 'error',
             data:   @resource.as_json,
             errors: @resource.errors.to_hash.merge(full_messages: @resource.errors.full_messages)
@@ -85,6 +89,7 @@ module Auth
       rescue ActiveRecord::RecordNotUnique
         clean_up_passwords @resource
         render json: {
+          code: 0,
           status: 'error',
           data:   @resource.as_json,
           errors: [I18n.t("devise_token_auth.registrations.email_already_exists", email: @resource.email)]
@@ -97,17 +102,20 @@ module Auth
         if @resource.send(resource_update_method, account_update_params)
           yield @resource if block_given?
           render json: {
+            code: 1,
             status: 'success',
             data:   @resource.as_json
           }
         else
           render json: {
+            code: 0,
             status: 'error',
             errors: @resource.errors.to_hash.merge(full_messages: @resource.errors.full_messages)
           }, status: 403
         end
       else
         render json: {
+          code: 0,
           status: 'error',
           errors: [I18n.t("devise_token_auth.registrations.user_not_found")]
         }, status: 404
@@ -120,11 +128,13 @@ module Auth
         yield @resource if block_given?
 
         render json: {
+          code: 1,
           status: 'success',
           message: I18n.t("devise_token_auth.registrations.account_with_uid_destroyed", uid: @resource.uid)
         }
       else
         render json: {
+          code: 0,
           status: 'error',
           errors: [I18n.t("devise_token_auth.registrations.account_to_destroy_not_found")]
         }, status: 404
