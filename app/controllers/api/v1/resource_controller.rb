@@ -3,6 +3,7 @@ module Api
     class ResourceController < ApplicationController
       before_action :set_default_response_format
       before_action :set_resource, only: [:destroy, :show, :update]
+      before_action :set_includes
 
       def index
         plural_resource_name = "@#{resource_name.pluralize}"
@@ -77,6 +78,14 @@ module Api
           request.format = :json
         end
 
+        def set_includes
+          @includes = {}
+          if params[:include]
+            params[:include].split(",").each do |includes|
+              @includes["#{includes}"] = get_resource.try(includes)
+            end
+          end
+        end
     end
 
   end

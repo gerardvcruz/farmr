@@ -25,6 +25,9 @@ Rails.application.routes.draw do
       resources :orders do
 
       end
+
+      resources :users, only: [:index, :show] do
+      end
     end
   end
 end
