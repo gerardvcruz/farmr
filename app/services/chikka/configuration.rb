@@ -7,7 +7,7 @@ module Chikka
       @client_id  = Rails.application.config.chikka_client_id
       @secret_key = Rails.application.config.chikka_secret_key
       @short_code = Rails.application.config.chikka_short_code
-      @api_url    = "http://post.chikka.com"
+      @api_url    = "https://post.chikka.com"
     end
 
   end
