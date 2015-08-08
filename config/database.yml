@@ -3,8 +3,8 @@ default: &default
  adapter: postgresql
  encoding: unicode
  pool: 5
- username: <%= ENV['FARMER_USER'] %>
- password: <%= ENV['FARMER_PASSWORD'] %>
+ username: <%= ENV['FARMR_USER'] %>
+ password: <%= ENV['FARMR_PASSWORD'] %>
 
 development:
  <<: *default
