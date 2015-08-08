@@ -41,5 +41,5 @@ Rails.application.configure do
 
   config.chikka_client_id  = ENV["CHIKKA_CLIENT_KEY"]
   config.chikka_secret_key = ENV["CHIKKA_SECRET_KEY"]
-  config.chikka_short_code = 2929032767
+  config.chikka_short_code = 29290859950
 end

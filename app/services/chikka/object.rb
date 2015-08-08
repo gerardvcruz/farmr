@@ -21,7 +21,7 @@ module Chikka
           req.url '/smsapi/request'
           req.body = {
             :message_type => @message_type.to_s,
-            :mobile_number => @mobile_number.to_i,
+            :mobile_number => @mobile_number,
             :shortcode => Chikka.configuration.short_code,
             :message_id => @message_id.to_s,
             :message => @message.to_s,
