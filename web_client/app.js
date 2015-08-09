@@ -7,10 +7,11 @@ $( "#login" ).on( "click",  function() {
       password:$("#password").val()
      },
      success: function(data, status, xhr) {
+      window.localStorage.setItem("current_user", JSON.stringify(data));
       if(data.data.user_type == 1)
-        window.location='supplier.html?uid='+data.data.id;
+        window.location='supplier.html';
       else
-        window.location='buyer.html?uid='+data.data.id;
+        window.location='buyer.html';
      },
     error: function (request, textStatus, errorThrown) {
       alert("Invalid Login");
