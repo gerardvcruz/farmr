@@ -1,0 +1,43 @@
+                  Prefix Verb   URI Pattern                            Controller#Action
+        new_user_session GET    /auth/sign_in(.:format)                auth/sessions#new
+            user_session POST   /auth/sign_in(.:format)                auth/sessions#create
+    destroy_user_session DELETE /auth/sign_out(.:format)               auth/sessions#destroy
+           user_password POST   /auth/password(.:format)               devise_token_auth/passwords#create
+       new_user_password GET    /auth/password/new(.:format)           devise_token_auth/passwords#new
+      edit_user_password GET    /auth/password/edit(.:format)          devise_token_auth/passwords#edit
+                         PATCH  /auth/password(.:format)               devise_token_auth/passwords#update
+                         PUT    /auth/password(.:format)               devise_token_auth/passwords#update
+cancel_user_registration GET    /auth/cancel(.:format)                 auth/registrations#cancel
+       user_registration POST   /auth(.:format)                        auth/registrations#create
+   new_user_registration GET    /auth/sign_up(.:format)                auth/registrations#new
+  edit_user_registration GET    /auth/edit(.:format)                   auth/registrations#edit
+                         PATCH  /auth(.:format)                        auth/registrations#update
+                         PUT    /auth(.:format)                        auth/registrations#update
+                         DELETE /auth(.:format)                        auth/registrations#destroy
+     auth_validate_token GET    /auth/validate_token(.:format)         devise_token_auth/token_validations#validate_token
+            auth_failure GET    /auth/failure(.:format)                devise_token_auth/omniauth_callbacks#omniauth_failure
+                         GET    /auth/:provider/callback(.:format)     devise_token_auth/omniauth_callbacks#omniauth_success
+                         GET    /auth/:provider(.:format)              redirect(301)
+         api_v1_supplies GET    /api/v1/supplies(.:format)             api/v1/supplies#index
+                         POST   /api/v1/supplies(.:format)             api/v1/supplies#create
+       new_api_v1_supply GET    /api/v1/supplies/new(.:format)         api/v1/supplies#new
+      edit_api_v1_supply GET    /api/v1/supplies/:id/edit(.:format)    api/v1/supplies#edit
+           api_v1_supply GET    /api/v1/supplies/:id(.:format)         api/v1/supplies#show
+                         PATCH  /api/v1/supplies/:id(.:format)         api/v1/supplies#update
+                         PUT    /api/v1/supplies/:id(.:format)         api/v1/supplies#update
+                         DELETE /api/v1/supplies/:id(.:format)         api/v1/supplies#destroy
+             api_v1_logs GET    /api/v1/logs(.:format)                 api/v1/logs#index
+                         POST   /api/v1/logs(.:format)                 api/v1/logs#create
+          new_api_v1_log GET    /api/v1/logs/new(.:format)             api/v1/logs#new
+         edit_api_v1_log GET    /api/v1/logs/:id/edit(.:format)        api/v1/logs#edit
+              api_v1_log GET    /api/v1/logs/:id(.:format)             api/v1/logs#show
+                         PATCH  /api/v1/logs/:id(.:format)             api/v1/logs#update
+                         PUT    /api/v1/logs/:id(.:format)             api/v1/logs#update
+                         DELETE /api/v1/logs/:id(.:format)             api/v1/logs#destroy
+       api_v1_categories GET    /api/v1/categories(.:format)           api/v1/categories#index
+         api_v1_category GET    /api/v1/categories/:id(.:format)       api/v1/categories#show
+            api_v1_units GET    /api/v1/units(.:format)                api/v1/units#index
+           api_v1_orders POST   /api/v1/orders(.:format)               api/v1/orders#create
+            api_v1_users GET    /api/v1/users(.:format)                api/v1/users#index
+             api_v1_user GET    /api/v1/users/:id(.:format)            api/v1/users#show
+                         GET    /omniauth/:provider/callback(.:format) devise_token_auth/omniauth_callbacks#redirect_callbacks

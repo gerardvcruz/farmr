@@ -39,7 +39,6 @@
 </head>
 
 <body>
-
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -93,6 +92,9 @@
                         </li>
                         <li>
                             <a href="supplier.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="addSupply.html"><i class="fa fa-dashboard fa-fw"></i> Add Supply</a>
                         </li>
                     </ul>
                 </div>
@@ -169,7 +171,7 @@
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     $.support.cors=true;
-
+    var current_user = JSON.parse(window.localStorage.getItem("current_user"));
     $(document).ready(function() {
         $.getJSON("http://52.76.30.161/api/v1/users/1?include=supplies,categories", function(data) {
             $("#username").text(data.name);

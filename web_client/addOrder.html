@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Add Supplies</title>
+    <title>Add Order</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="res/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -101,7 +101,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Add Supply</h1>
+                    <h1 class="page-header">Add Order</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -110,7 +110,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Supply
+                            Order
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -188,12 +188,13 @@
             $("#unit_id").append(listitems);
         });
     });
-    
-        //$("#username").text(current_user.name);
+    var current_user = JSON.parse(window.localStorage.getItem("current_user"));
+        $("#username").text(current_user.name);
     $( "#createSupply" ).on( "click",  function() {
+        alert(uid);
       $.post("http://52.76.30.161/api/v1/supplies",
          {"supply": {
-          "supplier_id":1,
+          "supplier_id":current_user.uid,
           "category_id":$("#category_id").val(),
           "quantity":$("#quantity").val(),
           "price":$("#price").val(),
@@ -214,7 +215,6 @@
     });
 
     </script>
-    <script src="app.js"></script>
 
 </body>
 
