@@ -150,7 +150,6 @@
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
-        <input type="text" id="uid"></input>
     </div>
     <!-- /#wrapper -->
 
@@ -170,22 +169,15 @@
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     $.support.cors=true;
-    function getCategory(id, idx){
-        $.ajax({
-             type: 'GET',
-             url:'http://52.76.30.161/api/v1/categories/'+id,
-             success: function(data) {
-               $("#catnum"+idx).html("data.name");
-             }
-        });
-    }
 
     $(document).ready(function() {
-        $.getJSON("http://52.76.30.161/api/v1/users/1?include=supplies", function(data) {
-            var idx = 0;
+        $.getJSON("http://52.76.30.161/api/v1/users/1?include=supplies,categories", function(data) {
             $("#username").text(data.name);
-            $.each(data.supplies, function(i, item) {
-                $("#dtable").append("<tr><td><span id='catnum"+idx+++"'>" + item.category_id+"</span></td><td>" + item.quantity + "</td><td>" + item.unit_id + "</td><td>" + item.price + "</td></tr>");
+            $.each(data, function(i, item) {
+                var supplies = data.supplies[item];
+                var categories = data.categories[item];
+
+                $("#dtable").append("<tr><td>" + categories.name+"</td><td>" + supplies.quantity + "</td><td>" + supplies.unit_id + "</td><td>" + supplies.price + "</td></tr>");
             });
         });
     });
