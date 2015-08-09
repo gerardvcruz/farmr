@@ -41,7 +41,6 @@ if(uid!=undefined){
      url:'http://52.76.30.161/api/v1/users/'+uid,
      success: function(data, status, xhr) {
       $("#username").text(data.name);
-      $("#uid").val(data.uid);
      }
   });
 }
