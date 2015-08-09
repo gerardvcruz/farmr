@@ -1,16 +1,16 @@
 $( "#login" ).on( "click",  function() {
   $.ajax({
      type: 'POST',
-     url:'http://52.76.32.213:3000/auth/sign_in',
+     url:'http://52.76.30.161/auth/sign_in',
      data: {
       email:$("#username").val(),
       password:$("#password").val()
      },
      success: function(data, status, xhr) {
-      if(data.data.user_type)
-        window.location='supplier.html?id='+data.data.id;
+      if(data.data.user_type == 1)
+        window.location='supplier.html?uid='+data.data.id;
       else
-        window.location='buyer.html?id='+data.data.id;
+        window.location='buyer.html?uid='+data.data.id;
      },
     error: function (request, textStatus, errorThrown) {
       alert("Invalid Login");
@@ -34,23 +34,14 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
-var id = getUrlParameter('id');
-if(id!=undefined){
+var uid = getUrlParameter('uid');
+if(uid!=undefined){
   $.ajax({
-     type: 'POST',
-     url:'http://52.76.32.213:3000/api/v1/users/1',
-     data: {
-      email:$("#username").val(),
-      password:$("#password").val()
-     },
+     type: 'GET',
+     url:'http://52.76.30.161/api/v1/users/'+uid,
      success: function(data, status, xhr) {
-      if(data.data.user_type)
-        window.location='supplier.html?id='+data.data.id;
-      else
-        window.location='buyer.html?id='+data.data.id;
-     },
-    error: function (request, textStatus, errorThrown) {
-      alert("Invalid Login");
-    }
+      $("#username").text(data.name);
+      $("#uid").val(data.uid);
+     }
   });
 }
