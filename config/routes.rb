@@ -22,7 +22,7 @@ Rails.application.routes.draw do
         # custom unit routes
       end
 
-      resources :orders do
+      resources :orders, only: [:create] do
         # custom order routes
       end
 
