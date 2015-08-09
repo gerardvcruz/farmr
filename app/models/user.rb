@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
           :omniauthable
   include DeviseTokenAuth::Concerns::User
   has_many :supplies, foreign_key: "supplier_id"
+  has_many :categories, through: :supplies
 end

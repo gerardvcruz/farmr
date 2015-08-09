@@ -10,7 +10,8 @@ module Api
         resources = class_of_resource.where(query_params)
 
         instance_variable_set(plural_resource_name, resources)
-        render json: instance_variable_get(plural_resource_name)
+        @resources = instance_variable_get(plural_resource_name)
+        render :index
       end
 
       def create
