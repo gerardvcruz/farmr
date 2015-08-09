@@ -570,17 +570,8 @@
     </script>
     <script src="app.js"></script>
     <script type="text/javascript">
-        var uid = getUrlParameter('uid');
-        if(uid!=undefined){
-          $.ajax({
-             type: 'GET',
-             url:'http://52.76.30.161/api/v1/users/'+uid,
-             success: function(data, status, xhr) {
-              $("#username").text(data.name);
-              $("#uid").val(data.uid);
-             }
-          });
-        }
+        var current_user = JSON.parse(window.localStorage.getItem("current_user"));
+        $("#username").text(current_user.name);
     </script>
 
 </body>
